@@ -26,6 +26,26 @@ class MemoListVC: UITableViewController {
         self.tableView.register(MemoCell.self, forCellReuseIdentifier: "memoCellWithImage")
     }
     */
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        //SWRevealViewController 라이브러리의 revealVeiwController 객체를 읽어온다.
+        if let revealVC = self.revealViewController() {
+            
+            //바 버튼 아이템 객체를 정의한다.
+            let btn = UIBarButtonItem()
+            btn.image = UIImage(named: "sidemenu.png")
+            btn.target = revealVC
+            btn.action = #selector(revealVC.revealToggle(_:))
+            
+            self.navigationItem.leftBarButtonItem = btn
+            
+            self.view.addGestureRecognizer(revealVC.panGestureRecognizer())
+        }
+    }
+    
+    
     // MARK: - Table view
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

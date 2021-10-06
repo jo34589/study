@@ -22,6 +22,18 @@
 		E38A3E38269EA2B10045D020 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E38A3E36269EA2B10045D020 /* LaunchScreen.storyboard */; };
 		E3A351EA26AE8BEF00F79363 /* MemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A351E926AE8BEF00F79363 /* MemoCell.swift */; };
 		E3A351EC26AE8C5800F79363 /* MemoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A351EB26AE8C5800F79363 /* MemoData.swift */; };
+		E3C9BF5A270D31D80004EE96 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C9BF59270D31D80004EE96 /* ProfileVC.swift */; };
+		E3EF3984270C37A400FE922E /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E3EF3982270C37A300FE922E /* SWRevealViewController.m */; };
+		E3EF398E270C393000FE922E /* account@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E3EF3985270C392F00FE922E /* account@2x.jpg */; };
+		E3EF398F270C393000FE922E /* profile-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E3EF3986270C392F00FE922E /* profile-bg.png */; };
+		E3EF3990270C393000FE922E /* icon04.png in Resources */ = {isa = PBXBuildFile; fileRef = E3EF3987270C392F00FE922E /* icon04.png */; };
+		E3EF3991270C393000FE922E /* icon03.png in Resources */ = {isa = PBXBuildFile; fileRef = E3EF3988270C392F00FE922E /* icon03.png */; };
+		E3EF3992270C393000FE922E /* icon02.png in Resources */ = {isa = PBXBuildFile; fileRef = E3EF3989270C393000FE922E /* icon02.png */; };
+		E3EF3993270C393000FE922E /* icon01.png in Resources */ = {isa = PBXBuildFile; fileRef = E3EF398A270C393000FE922E /* icon01.png */; };
+		E3EF3994270C393000FE922E /* icon06.png in Resources */ = {isa = PBXBuildFile; fileRef = E3EF398B270C393000FE922E /* icon06.png */; };
+		E3EF3995270C393000FE922E /* sidemenu.png in Resources */ = {isa = PBXBuildFile; fileRef = E3EF398C270C393000FE922E /* sidemenu.png */; };
+		E3EF3996270C393000FE922E /* icon05.png in Resources */ = {isa = PBXBuildFile; fileRef = E3EF398D270C393000FE922E /* icon05.png */; };
+		E3EF3998270C3D7900FE922E /* SideBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF3997270C3D7900FE922E /* SideBarVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +54,20 @@
 		E38A3E39269EA2B10045D020 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3A351E926AE8BEF00F79363 /* MemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoCell.swift; sourceTree = "<group>"; };
 		E3A351EB26AE8C5800F79363 /* MemoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoData.swift; sourceTree = "<group>"; };
+		E3C9BF59270D31D80004EE96 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		E3EF3981270C37A300FE922E /* MyMemory-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyMemory-Bridging-Header.h"; sourceTree = "<group>"; };
+		E3EF3982270C37A300FE922E /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		E3EF3983270C37A400FE922E /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		E3EF3985270C392F00FE922E /* account@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "account@2x.jpg"; sourceTree = "<group>"; };
+		E3EF3986270C392F00FE922E /* profile-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-bg.png"; sourceTree = "<group>"; };
+		E3EF3987270C392F00FE922E /* icon04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon04.png; sourceTree = "<group>"; };
+		E3EF3988270C392F00FE922E /* icon03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon03.png; sourceTree = "<group>"; };
+		E3EF3989270C393000FE922E /* icon02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon02.png; sourceTree = "<group>"; };
+		E3EF398A270C393000FE922E /* icon01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon01.png; sourceTree = "<group>"; };
+		E3EF398B270C393000FE922E /* icon06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon06.png; sourceTree = "<group>"; };
+		E3EF398C270C393000FE922E /* sidemenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sidemenu.png; sourceTree = "<group>"; };
+		E3EF398D270C393000FE922E /* icon05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon05.png; sourceTree = "<group>"; };
+		E3EF3997270C3D7900FE922E /* SideBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +87,15 @@
 				E32A153B2704403800E1316B /* button-bg.png */,
 				E32A153C2704403800E1316B /* memo-background@2x.png */,
 				E32A153A2704403800E1316B /* warning-icon-60@2x.png */,
+				E3EF3985270C392F00FE922E /* account@2x.jpg */,
+				E3EF398A270C393000FE922E /* icon01.png */,
+				E3EF3989270C393000FE922E /* icon02.png */,
+				E3EF3988270C392F00FE922E /* icon03.png */,
+				E3EF3987270C392F00FE922E /* icon04.png */,
+				E3EF398D270C393000FE922E /* icon05.png */,
+				E3EF398B270C393000FE922E /* icon06.png */,
+				E3EF3986270C392F00FE922E /* profile-bg.png */,
+				E3EF398C270C393000FE922E /* sidemenu.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -84,10 +119,14 @@
 		E38A3E27269EA2B00045D020 /* MyMemory */ = {
 			isa = PBXGroup;
 			children = (
+				E3EF3983270C37A400FE922E /* SWRevealViewController.h */,
+				E3EF3982270C37A300FE922E /* SWRevealViewController.m */,
 				E32A15392704401700E1316B /* Resources */,
 				E38A3E28269EA2B00045D020 /* AppDelegate.swift */,
 				E38A3E2A269EA2B00045D020 /* SceneDelegate.swift */,
 				E38A3E2E269EA2B00045D020 /* Main.storyboard */,
+				E3C9BF59270D31D80004EE96 /* ProfileVC.swift */,
+				E3EF3997270C3D7900FE922E /* SideBarVC.swift */,
 				E32A15372704325600E1316B /* CSLogButton.swift */,
 				E3A351EB26AE8C5800F79363 /* MemoData.swift */,
 				E30A971226A964820032D489 /* MemoListVC.swift */,
@@ -98,6 +137,7 @@
 				E38A3E36269EA2B10045D020 /* LaunchScreen.storyboard */,
 				E38A3E39269EA2B10045D020 /* Info.plist */,
 				E38A3E31269EA2B00045D020 /* MyMemory.xcdatamodeld */,
+				E3EF3981270C37A300FE922E /* MyMemory-Bridging-Header.h */,
 			);
 			path = MyMemory;
 			sourceTree = "<group>";
@@ -133,6 +173,7 @@
 				TargetAttributes = {
 					E38A3E24269EA2B00045D020 = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -159,12 +200,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3EF398F270C393000FE922E /* profile-bg.png in Resources */,
 				E38A3E38269EA2B10045D020 /* LaunchScreen.storyboard in Resources */,
+				E3EF3994270C393000FE922E /* icon06.png in Resources */,
 				E32A153E2704403800E1316B /* button-bg.png in Resources */,
+				E3EF3996270C393000FE922E /* icon05.png in Resources */,
 				E38A3E35269EA2B10045D020 /* Assets.xcassets in Resources */,
 				E32A153D2704403800E1316B /* warning-icon-60@2x.png in Resources */,
+				E3EF3990270C393000FE922E /* icon04.png in Resources */,
 				E32A153F2704403800E1316B /* memo-background@2x.png in Resources */,
+				E3EF3992270C393000FE922E /* icon02.png in Resources */,
+				E3EF398E270C393000FE922E /* account@2x.jpg in Resources */,
 				E38A3E30269EA2B00045D020 /* Main.storyboard in Resources */,
+				E3EF3991270C393000FE922E /* icon03.png in Resources */,
+				E3EF3993270C393000FE922E /* icon01.png in Resources */,
+				E3EF3995270C393000FE922E /* sidemenu.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,13 +225,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3C9BF5A270D31D80004EE96 /* ProfileVC.swift in Sources */,
 				E32A15382704325600E1316B /* CSLogButton.swift in Sources */,
+				E3EF3998270C3D7900FE922E /* SideBarVC.swift in Sources */,
 				E3A351EA26AE8BEF00F79363 /* MemoCell.swift in Sources */,
 				E3A351EC26AE8C5800F79363 /* MemoData.swift in Sources */,
 				E38A3E33269EA2B00045D020 /* MyMemory.xcdatamodeld in Sources */,
 				E30A971326A964820032D489 /* MemoListVC.swift in Sources */,
 				E30A971726A964B60032D489 /* MemoFormVC.swift in Sources */,
 				E30A971526A964990032D489 /* MemoReadVC.swift in Sources */,
+				E3EF3984270C37A400FE922E /* SWRevealViewController.m in Sources */,
 				E38A3E29269EA2B00045D020 /* AppDelegate.swift in Sources */,
 				E38A3E2B269EA2B00045D020 /* SceneDelegate.swift in Sources */,
 			);
@@ -330,6 +383,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DD4UBSQHA8;
 				INFOPLIST_FILE = MyMemory/Info.plist;
@@ -339,6 +393,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = linerlin.MyMemory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyMemory/MyMemory-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -349,6 +405,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = DD4UBSQHA8;
 				INFOPLIST_FILE = MyMemory/Info.plist;
@@ -358,6 +415,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = linerlin.MyMemory;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyMemory/MyMemory-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
