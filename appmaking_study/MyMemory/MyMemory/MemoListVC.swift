@@ -16,6 +16,15 @@ class MemoListVC: UITableViewController {
     
     //뷰 컨트롤러가 디바이스의 스크린에 출력될때 마다 호출되는 함수.
     override func viewWillAppear(_ animated: Bool) {
+        //왜 이 구문이 viewWillAppear 에 들어가는가?
+        //viewDidLoad() 가 호출되는 시점에는 뷰가 메모리에만 로드된 상태이기 때문에 화면 전환이 불가능함.
+        let ud = UserDefaults.standard
+        if ud.bool(forKey: UserInfoKey.tutorial) == false {
+            let vc = self.instanceTutorialVC(name: "MasterVC")
+            vc?.modalPresentationStyle = .fullScreen
+            self.present(vc!, animated: false)
+            return
+        }
         
         self.tableView.reloadData()
     }

@@ -12,7 +12,7 @@ class SideBarVC: UITableViewController {
     let nameLabel = UILabel()
     let emailLabel = UILabel()
     let profileImage = UIImageView()
-    
+    let uinfo = UserInfoManager()
     
     //목록 데이터 배열
     let titles = ["새글 작성하기", "친구 새글", "달력으로 보기", "공지사항", "통계", "계정 관리"]
@@ -27,6 +27,8 @@ class SideBarVC: UITableViewController {
         UIImage(named:"icon06.png")
     ]
     
+// MARK: - viewDidLoad
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //테이블뷰의 헤더 뷰 작성
@@ -37,7 +39,7 @@ class SideBarVC: UITableViewController {
         
         //이름 레이블의 속성을 정의하고 헤더 뷰에 추가
         self.nameLabel.frame = CGRect(x: 70, y: 15, width: 100, height: 30)
-        self.nameLabel.text = "가만안도 엔나루"
+        //self.nameLabel.text = "가만안도 엔나루"
         self.nameLabel.textColor = .white
         self.nameLabel.font = UIFont.boldSystemFont(ofSize: 15)
         self.nameLabel.backgroundColor = .clear
@@ -46,7 +48,7 @@ class SideBarVC: UITableViewController {
         
         //이메일 레이블의 속성을 정의하고, 헤더 뷰에 추가한다.
         self.emailLabel.frame = CGRect(x: 70, y: 30, width: 150, height: 30)
-        self.emailLabel.text = "jo34589@naver.com"
+        //self.emailLabel.text = "jo34589@naver.com"
         self.emailLabel.textColor = .white
         self.emailLabel.font = UIFont.systemFont(ofSize: 11)
         self.emailLabel.backgroundColor = .clear
@@ -54,8 +56,8 @@ class SideBarVC: UITableViewController {
         headerView.addSubview(emailLabel)
         
         //기본 이미지를 구현한다.
-        let defaultProfile = UIImage(named: "account.jpg")
-        self.profileImage.image = defaultProfile //이미지 등록
+        //let defaultProfile = UIImage(named: "account.jpg")
+        //self.profileImage.image = defaultProfile //이미지 등록
         self.profileImage.frame = CGRect(x: 10, y: 10, width: 50, height: 50) //위치와 크기를 정의
         
         //프로필 이미지 둥글게 만들기
@@ -64,6 +66,17 @@ class SideBarVC: UITableViewController {
         self.profileImage.layer.masksToBounds = true //마스크 효과
         
         view.addSubview(self.profileImage) //헤더 뷰에 추가
+    }
+    
+// MARK: - viewWillAppear
+    
+    //사이드 바가 화면에 표시될 때 마다 로그인 정보를 읽어와 갱신하도록 메소드를 작성
+    //viewWillAppear 메소드는 화면이 표시될 때 마다 실행됨.
+    override func viewWillAppear(_ animated: Bool) {
+        self.nameLabel.text = self.uinfo.name ?? "Guest"
+        self.emailLabel.text = self.uinfo.account ?? ""
+        self.profileImage.image = self.uinfo.profile
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
