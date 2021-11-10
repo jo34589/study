@@ -58,9 +58,9 @@
 		E31CBB82273916040070591D /* Chapter07-CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				E31CBB89273916040070591D /* Main.storyboard */,
 				E31CBB83273916040070591D /* AppDelegate.swift */,
 				E31CBB85273916040070591D /* SceneDelegate.swift */,
-				E31CBB89273916040070591D /* Main.storyboard */,
 				E31CBB9A27391FE00070591D /* ListVC.swift */,
 				E31CBB8F273916060070591D /* Assets.xcassets */,
 				E31CBB91273916060070591D /* LaunchScreen.storyboard */,
