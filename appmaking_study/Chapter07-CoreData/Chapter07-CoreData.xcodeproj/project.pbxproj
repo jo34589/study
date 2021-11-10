@@ -14,6 +14,7 @@
 		E31CBB90273916060070591D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E31CBB8F273916060070591D /* Assets.xcassets */; };
 		E31CBB93273916060070591D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E31CBB91273916060070591D /* LaunchScreen.storyboard */; };
 		E31CBB9B27391FE00070591D /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31CBB9A27391FE00070591D /* ListVC.swift */; };
+		E3D8A34D273BA6430086E459 /* LogVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D8A34C273BA6430086E459 /* LogVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E31CBB92273916060070591D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E31CBB94273916060070591D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E31CBB9A27391FE00070591D /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
+		E3D8A34C273BA6430086E459 /* LogVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				E31CBB83273916040070591D /* AppDelegate.swift */,
 				E31CBB85273916040070591D /* SceneDelegate.swift */,
 				E31CBB9A27391FE00070591D /* ListVC.swift */,
+				E3D8A34C273BA6430086E459 /* LogVC.swift */,
 				E31CBB8F273916060070591D /* Assets.xcassets */,
 				E31CBB91273916060070591D /* LaunchScreen.storyboard */,
 				E31CBB94273916060070591D /* Info.plist */,
@@ -143,6 +146,7 @@
 			files = (
 				E31CBB9B27391FE00070591D /* ListVC.swift in Sources */,
 				E31CBB84273916040070591D /* AppDelegate.swift in Sources */,
+				E3D8A34D273BA6430086E459 /* LogVC.swift in Sources */,
 				E31CBB86273916040070591D /* SceneDelegate.swift in Sources */,
 				E31CBB8E273916040070591D /* Chapter07_CoreData.xcdatamodeld in Sources */,
 			);

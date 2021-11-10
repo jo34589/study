@@ -52,6 +52,23 @@ class ListVC: UITableViewController {
         object.setValue(contents, forKey: "contents")
         object.setValue(Date(), forKey: "regdate")
         
+        //log 관리 객체 생성 및 어트리뷰트에 값 대입
+        let logObject = NSEntityDescription.insertNewObject(forEntityName: "Log", into: context) as! LogMO
+        
+        logObject.regdate = Date()
+        logObject.type = LogType.create.rawValue
+        //게시글 객체의 logs 속성에 새로 생성된 로그 객체 추가
+        //릴레이션 처리에 해당
+        (object as! BoardMO).addToLogs(logObject)
+        //반대로는
+        //logObject.board = (object as! BoardMO)를 쓸 수 있다.
+        //정리
+        /*
+         BoardMO 는 LogMO 와 1:M 관계를 가지고 있기 때문에 .addToLogs(logObject)로 쓰고
+         LogMO는 반대로 1:1 관계이기 때문에 logObject.board = _ as! BoardMO 로 썼다.
+         둘 다 같은 결과를 가져온다.
+         */
+        
         //영구 저장소에 커밋되고 나면 list 프로퍼티에 추가
         do {
             try context.save()
@@ -117,6 +134,12 @@ class ListVC: UITableViewController {
         object.setValue(title, forKey: "title")
         object.setValue(contents, forKey: "contents")
         object.setValue(Date(), forKey: "regdate")
+        
+        let logObject = NSEntityDescription.insertNewObject(forEntityName: "Log", into: context) as! LogMO
+        logObject.regdate = Date()
+        logObject.type = LogType.edit.rawValue
+        
+        (object as! BoardMO).addToLogs(logObject)
         
         //영구 저장소에 반영
         do {
@@ -205,5 +228,14 @@ class ListVC: UITableViewController {
             }
         })
         self.present(alert, animated: false)
+    }
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let object = self.list[indexPath.row]
+        let uvc = self.storyboard?.instantiateViewController(withIdentifier: "LogVC") as! LogVC
+        uvc.board = (object as! BoardMO)
+        
+        self.show(uvc, sender: self)
+        
     }
 }
