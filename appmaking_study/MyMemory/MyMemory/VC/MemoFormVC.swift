@@ -9,6 +9,9 @@ import UIKit
 
 class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
     
+    //추가:
+    lazy var dao = MemoDAO()
+    
     var subject: String!
     @IBOutlet weak var contents: UITextView!
     @IBOutlet weak var preview: UIImageView!
@@ -59,8 +62,11 @@ class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         data.regdate = Date()
         
         //앱 델리게이트 객체를 읽어온 다음, memolist 배열에 data를 추가
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.memoList.append(data)
+        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        //appDelegate.memoList.append(data)
+        
+        //추가: 코어 데이터에 메오 데이터를 추가한다
+        self.dao.insert(data)
         
         //작성폼 화면을 종료하고 이전 화면으로 되돌아간다.
         _ = self.navigationController?.popViewController(animated: true)
@@ -75,7 +81,7 @@ class MemoFormVC: UIViewController, UIImagePickerControllerDelegate, UINavigatio
         picker.allowsEditing = true
         
         //이미지 피커 화면을 표시한다.
-        self.present(picker, animated: false)
+        self.present(picker, animated: true)
         
     }
     

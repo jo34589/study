@@ -7,7 +7,12 @@
 
 import UIKit
 
-class MemoListVC: UITableViewController {
+class MemoListVC: UITableViewController, UISearchBarDelegate {
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    //dao 프로퍼티 추가
+    lazy var dao = MemoDAO()
     
     //앱 델리게이트 객체의 참조 정보를 읽어온다.
     //UIApplication 에서 delegate 를 불러와, 이 앱을 만들 때 AppDelegate.swift 에서 정의한 AppDelegate 로 타입캐스팅
@@ -16,6 +21,10 @@ class MemoListVC: UITableViewController {
     
     //뷰 컨트롤러가 디바이스의 스크린에 출력될때 마다 호출되는 함수.
     override func viewWillAppear(_ animated: Bool) {
+        
+        //serachbar 추가에 따라
+        searchBar.enablesReturnKeyAutomatically = false
+        
         //왜 이 구문이 viewWillAppear 에 들어가는가?
         //viewDidLoad() 가 호출되는 시점에는 뷰가 메모리에만 로드된 상태이기 때문에 화면 전환이 불가능함.
         let ud = UserDefaults.standard
@@ -25,6 +34,9 @@ class MemoListVC: UITableViewController {
             self.present(vc!, animated: false)
             return
         }
+        
+        //테이블 뷰 리로드 전에 호출되어야 함.
+        self.appDelegate.memoList = self.dao.fetch()
         
         self.tableView.reloadData()
     }
@@ -52,6 +64,16 @@ class MemoListVC: UITableViewController {
             
             self.view.addGestureRecognizer(revealVC.panGestureRecognizer())
         }
+    }
+    
+    //키보드의 검색 키를 눌렀을 때 발동됨.
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //검색 바에 입력된 키워드를 가져온다.
+        let keyword = searchBar.text
+        
+        //키워드를 적용하여 데이터를 검색하고, 테이블 뷰를 갱신한다.
+        self.appDelegate.memoList = self.dao.fetch(keyword: keyword)
+        self.tableView.reloadData()
     }
     
     
@@ -112,6 +134,21 @@ class MemoListVC: UITableViewController {
         //MemoReadVC가 된 vc의 param에 값을 전달.
         vc.param = row
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    //삭제 기능 구현
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let data = self.appDelegate.memoList[indexPath.row]
+        
+        //코어데이터에서 삭제한 다음 배열 내 데이터 및 테이블 뷰 행을 차례로 삭제
+        if dao.delete(data.objectID!) {
+            self.appDelegate.memoList.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 
     /*

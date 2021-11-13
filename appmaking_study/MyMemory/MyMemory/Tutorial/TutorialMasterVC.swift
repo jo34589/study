@@ -14,7 +14,7 @@ class TutorialMasterVC: UIViewController, UIPageViewControllerDataSource {
     
     var contentTitles = ["STEP 1", "STEP 2", "STEP 3", "STEP 4"]
     //에셋카테고리에 등록된 이름을 사용.
-    var contentImages = ["page0, page1, page2, page3"]
+    var contentImages = ["page0", "page1", "page2", "page3"]
     
     @IBAction func close(_ sender: Any) {
         let ud = UserDefaults.standard
@@ -62,7 +62,7 @@ class TutorialMasterVC: UIViewController, UIPageViewControllerDataSource {
         
         //콘텐츠 뷰 컨트롤러 내용을 구성
         cvc.titleText = self.contentTitles[idx]
-        cvc.imageFile = self.contentImages[idx]
+        cvc.imageFile = self.contentImages[idx] //
         cvc.pageIndex = idx
         
         return cvc
