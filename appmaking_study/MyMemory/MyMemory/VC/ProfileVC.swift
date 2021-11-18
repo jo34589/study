@@ -17,6 +17,11 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     let profileImage = UIImageView() //프로필 사진 이미지
     let tv = UITableView() //프로필 목록
     
+    //인디케이터
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    //api 호출 상태값
+    var isCalling = false
+    
 // MARK: - viewDidLoad
     
     override func viewDidLoad() {
@@ -83,6 +88,8 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         let tap = UITapGestureRecognizer(target: self, action: #selector(profile(_:)))
         self.profileImage.addGestureRecognizer(tap)
         self.profileImage.isUserInteractionEnabled = true
+        
+        self.view.bringSubviewToFront(self.indicatorView)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -133,6 +140,14 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
     }
     
     @objc func doLogin(_ sender: Any) {
+        //중복 처리 방지
+        if self.isCalling == true {
+            self.alert("응답을 기다리는 중입니다. \n잠시만 기다려 주세요.")
+            return
+        } else {
+            self.isCalling = true
+        }
+        
         let loginAlert = UIAlertController(title: "LOGIN", message: nil, preferredStyle: .alert)
         
         //알림창에 들어갈 입력폼 추가.
@@ -146,11 +161,33 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
             tf.isSecureTextEntry = true
         }
         
-        loginAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        loginAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            self.isCalling = false
+        })
         loginAlert.addAction(UIAlertAction(title: "Login", style: .destructive){ (_) in
+            //인디케이터 실행
+            self.indicatorView.startAnimating()
+            
             let account = loginAlert.textFields?[0].text ?? "" //계정
             let passwd = loginAlert.textFields?[1].text ?? "" //비밀번호
+
+            //비동기 방식으로 변경되는 부분
+            self.uinfo.login(account: account, passwd: passwd, success: {
+                self.indicatorView.stopAnimating()
+                self.isCalling = false
+                
+                self.tv.reloadData()
+                self.profileImage.image = self.uinfo.profile
+                self.drawBtn()
+            }, fail: { msg in
+                self.indicatorView.stopAnimating()
+                self.isCalling = false
+                
+                self.alert(msg)
+            })
             
+            /*
+             이 주석안의 내용은 위에서 비동기 방식으로 변경됨.
             if self.uinfo.login(account: account, passwd: passwd) {
                 //todo: 로그인 성공시 처리할 내용이 들어갈 예정
                 self.tv.reloadData()
@@ -165,6 +202,9 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
                 
                 self.present(alert, animated: false, completion: nil)
             }
+            */
+            
+            
         })
         self.present(loginAlert, animated: false)
     }
@@ -293,7 +333,9 @@ class ProfileVC: UIViewController, UITableViewDelegate, UITableViewDataSource, U
         alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
         
         self.present(alert, animated: true)
-        
     }
-    
+    @IBAction func backProfileVC(_ segue: UIStoryboardSegue) {
+        //단지 프로필 화면으로 되돌아오기 위한 표식 역할만 할뿐
+        //아무 내용도 작성하지 않음
+    }
 }
