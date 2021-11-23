@@ -132,6 +132,16 @@ class UserInfoManager {
                         self.profile = UIImage(data: imageData)
                     }
                 }
+                
+                //토큰 정보 추출
+                let accessToken = jsonObject["access_token"] as! String
+                let refreshToken = jsonObject["refreshToken"] as! String
+                
+                //토큰 정보 저장
+                let tk = TokenUtils()
+                tk.save("kr.co.rubypaper.MyMemory", account: "accessToken", value: accessToken)
+                tk.save("kr.co.rubypaper.MyMemory", account: "refreshToken", value: refreshToken)
+                
                 //인자값으로 입력된 success 클로저 블록 실행
                 success?()
                 
@@ -142,13 +152,72 @@ class UserInfoManager {
         }
     }
     
-    func logout() -> Bool {
+    func deviceLogout() {
+        //기본 저장소에 저장된 값을 모두 삭제
         let ud = UserDefaults.standard
         ud.removeObject(forKey: UserInfoKey.loginId)
         ud.removeObject(forKey: UserInfoKey.account)
         ud.removeObject(forKey: UserInfoKey.name)
         ud.removeObject(forKey: UserInfoKey.profile)
         ud.synchronize()
-        return true
+        
+        //키 체인에 저장된 값을 모두 삭제
+        let tokenUtils = TokenUtils()
+        tokenUtils.delete("kr.co.rubypaper", account: "refreshToken")
+        tokenUtils.delete("kr.co.rubypaper", account: "accessToken")
+    }
+    
+    func logout(completion: (()->Void)? = nil) {
+        //호출 url
+        let url = "http://swiftapi.rubypaper.co.kr:2029/userAccount/logout"
+        
+        //인증 헤더 구성
+        let tokenUtils = TokenUtils()
+        let header = tokenUtils.getAuthorizationHeader()
+        
+        //api 호출 및 응답 처리
+        let call = AF.request(url, method: .post, encoding: JSONEncoding.default, headers: header)
+        call.responseJSON() { _ in
+            //응답이 온 이후 처리할 내용.
+            self.deviceLogout()
+            //전달받은 완료 클로저를 실행
+            completion?()
+        }
+    }
+    
+    //프로필 이미지를 업데이트 하는 함수
+    func newProfile(_ profile: UIImage?, success: (()->Void)? = nil, fail: ((String)->Void)?) {
+        //API 호출 URL
+        let url = "http://swiftapi.rubypaper.co.kr:2029/userAccount/profile"
+        
+        //인증 헤더
+        let tk = TokenUtils()
+        let header = tk.getAuthorizationHeader()
+        
+        //전송할 프로필 이미지
+        let profileData = profile!.pngData()?.base64EncodedString()
+        let param: Parameters = ["profile_image" : profileData]
+        
+        //이미지 전송
+        let call = AF.request(url, method: .post, parameters: param, encoding: JSONEncoding.default, headers: header)
+        
+        call.responseJSON { res in
+            guard let jsonObject = try! res.result.get() as? NSDictionary else {
+                fail?("올바른 응답값이 아닙니다.")
+                return
+            }
+            
+            //응답 코드 확인. 0 이면 성공
+            let resultCode = jsonObject["result_code"] as! Int
+            
+            if resultCode == 0 { //성공한다면
+                self.profile = profile // 이미지가 업로드 되었으니 Userdefaults 에 저장한 이미지로 변경한다.
+                success?()
+            } else {
+                let msg = (jsonObject["error)msg"] as? String) ?? "이미지 프로필 변경이 실패했습니다."
+                fail?(msg)
+            }
+        }
+        
     }
 }
