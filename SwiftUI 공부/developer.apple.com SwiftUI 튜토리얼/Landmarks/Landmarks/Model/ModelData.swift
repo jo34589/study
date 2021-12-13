@@ -13,6 +13,7 @@ final class ModelData: ObservableObject {
     //will never modify hike data after loading it
     //so no need to put @Published
     var hikes: [Hike] = load("hikeData.json")
+    @Published var profile = Profile.default
     
     var categories : [String: [Landmark]] {
         Dictionary(
