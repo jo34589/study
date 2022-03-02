@@ -19,7 +19,6 @@ struct Badge: View {
     }
     
     var body: some View {
-        
         ZStack {
             BadgeBackground()
             GeometryReader{ geometry in

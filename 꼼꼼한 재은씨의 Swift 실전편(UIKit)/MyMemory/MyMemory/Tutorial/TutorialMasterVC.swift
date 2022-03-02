@@ -46,7 +46,6 @@ class TutorialMasterVC: UIViewController, UIPageViewControllerDataSource {
         
     }
     
-    
     //콘텐츠 뷰 컨트롤러를 동적으로 생성할 메소드.
     //필요에 의해 정의하는 커스텀.
     func getContentVC(atIndex idx: Int) -> UIViewController? {

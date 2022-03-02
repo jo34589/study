@@ -96,7 +96,6 @@ class MemoDAO {
         }
     }
     
-    
     func delete(_ objectID: NSManagedObjectID) -> Bool {
         //삭제할 객체를 찾아, 컨텍스트에서 삭제한다.
         let object = self.context.object(with: objectID)
